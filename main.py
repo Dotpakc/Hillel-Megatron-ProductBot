@@ -142,7 +142,11 @@ async def process_callback_buy(callback_query: types.CallbackQuery, state: FSMCo
 async def process_callback_back(callback_query: types.CallbackQuery, state: FSMContext):
     await process_courses_command(callback_query.message, state)
 
-
+#Контакти
+@dp.message_handler(lambda message: message.text == '📞Контакти', state='*')
+async def process_contacts_command(message: types.Message, state: FSMContext):
+    await message.reply('Зв\'яжіться з нами за телефоном: 0800 20 8020\n Або на сайті: https://dnipro.ithillel.ua/contact', reply_markup=main_menu_rep)
+  
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
